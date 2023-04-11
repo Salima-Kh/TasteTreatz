@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+My Bookmarks
+{% endblock %}
+
+{% block main %}
+
+<div class="container my-5">
+    <div class="row cream-background">
+        <div class="col-md-12">
+            <h1 class="mb-4">My Bookmarks</h1>
+            {% if saved_recipes_list %}
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Title</th>
+                            <th scope="col">Link</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Source</th>
+                            <th scope="col">Calories</th>
+                            <th scope="col">Remove</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for saved_recipe in saved_recipes_list %}
+                            <tr>
+                                <td>{{ saved_recipe["label"] }}</td>
+                                <td><a href="{{ saved_recipe["link"] }}" target="_blank">{{ saved_recipe["link"] }}</a></td>
+                                <td><img src="{{ saved_recipe["image"] }}" width="100"></td>
+                                <td>{{ saved_recipe["source"] }}</td>
+                                <td>{{ saved_recipe["calories"] }}</td>
+                                <td>{{ saved_recipe["totaltime"] }}</td>
+                                <td>{{ saved_recipe["dishtype"] }}</td>
+                                <td>{{ saved_recipe["dietlabels"] }}</td>
+                                <td>{{ saved_recipe["healthlabels"] }}</td>
+                                <td>{{ saved_recipe["cuisinetype"] }}</td>
+                                <td>{{ saved_recipe["ingredientlines"] }}</td>
+                                <td>
+                                    <form action="{{ url_for('remove') }}" method="POST">
+                                        <input type="hidden" name="link" value="{{ saved_recipe["link"] }}">
+                                        <button type="submit" class="btn btn-danger">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No bookmarks saved yet.</p>
+            {% endif %}
+            <a href="{{ url_for('index') }}" class="px-5 py-3 btn btn-success">Back to Search</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

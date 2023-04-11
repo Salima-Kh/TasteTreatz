@@ -1,0 +1,127 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    About
+{% endblock %}
+
+{% block main %}
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css');
+        /* Responsive font sizes */
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        /* Responsive padding and margin */
+        .py-lg-5 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        
+        .pb-md-5 {
+            padding-bottom: 1.5rem;
+        }
+        
+        .pt-md-5 {
+            padding-top: 1.5rem;
+        }
+        
+        /* Responsive columns */
+        .col-sm-6 {
+            flex-basis: 50%;
+            max-width: 50%;
+        }
+        
+        /* Colors */
+        .text-primary {
+            color: #007bff;
+        }
+        
+        .bg-light {
+            background-color: #f8f9fa!important;
+        }
+        
+        .bg-secondary {
+            background-color: #6c757d!important;
+        }
+
+    </style>
+    <section>
+        <div class="container" style="padding: 20px; border: 2px solid #333333; border-radius: 10px; background-color: #FFFFFF; margin-bottom: 20px;">
+            <h1>🤖About Our Web App🤖</h1>
+            <p>
+                Our web app is designed to help users discover new recipes based on their dietary preferences and restrictions. We aim to provide a seamless experience for finding delicious and healthy recipes, making it easier for everyone to explore new dishes and maintain a balanced diet.
+            </p>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container" style="padding: 20px; border: 2px solid #333333; border-radius: 10px; background-color: #FFFFFF; margin-bottom: 20px;">
+            <h1>🤖Features🤖</h1>
+            <div class="row">
+                <div class="col-sm-6 col-md-4">
+                    <i class="fas fa-sliders-h fa-3x mb-3"></i>
+                    <h3>Personalized Results</h3>
+                    <p>
+                        Our web app provides personalized search results based on your selected ingredients, diet labels, health labels, cuisine types, and dish types.
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <i class="fas fa-bookmark fa-3x mb-3"></i>
+                    <h3>Bookmark Recipes</h3>
+                    <p>
+                        Save your favorite recipes and access them anytime in your bookmarks. Our bookmarking feature allows you to easily access and manage your favorite recipes.
+                    </p>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <i class="fas fa-calculator fa-3x mb-3"></i>
+                    <h3>Caloric Needs Calculator</h3>
+                    <p>
+                        Calculate your daily caloric needs based on your age, weight, height, activity level, and gender. This feature helps you to maintain a healthy diet by understanding your body's energy requirements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container" style="padding: 20px; border: 2px solid #333333; border-radius: 10px; background-color: #FFFFFF; margin-bottom: 20px;">
+            <h2>🤖Our Team🤖</h2>
+            <p>
+                We are a group of passionate developers and food enthusiasts who believe in the power of technology to improve our lives. Our mission is to create a platform that makes it easy for everyone to discover and enjoy delicious, healthy recipes.
+            </p>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <h3>Creator</h3>
+                    <h4>👩‍💻Salima Khan</h4>
+                    <p>
+                        B.Tech Computer Science Finalist at Jamia Hamdard University
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Supervisor</h3>
+                    <h4>Ms. Nida Iftekhar</h4>
+                    <p>
+                        Asosciate Professor at Jamia Hamdard University
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>   
+{% endblock %}
