@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Meal Plan
+{% endblock %}
+
+{% block content %}
+    <h1>Meal Plan</h1>
+    {% for day, meals in meal_plan.items() %}
+        <h2>{{ day }}</h2>
+        <h3>Meal</h3>
+        <p>Name: {{ meals.meal.name }}</p>
+        <p>Category: {{ meals.meal.category }}</p>
+        <p>Instructions: {{ meals.meal.instructions }}</p>
+        <img src="{{ meals.meal.image }}" alt="{{ meals.meal.name }}">
+        <h3>Cocktail</h3>
+        <p>Name: {{ meals.cocktail.name }}</p>
+        <p>Category: {{ meals.cocktail.category }}</p>
+        <p>Instructions: {{ meals.cocktail.instructions }}</p>
+        <img src="{{ meals.cocktail.image }}" alt="{{ meals.cocktail.name }}">
+    {% endfor %}
+{% endblock %}
+

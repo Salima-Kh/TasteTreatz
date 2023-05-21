@@ -2,13 +2,13 @@ import os
 from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from helpers import split_dict, stringify, lookup, readable_list
-import requests
-import random
-import string
-import json
 
 # Configure app
+
 app = Flask(__name__)
+app.config['SESSION_COOKIE_NAME'] = 'my_session_cookie'
+app.testing = True
+client = app.test_client()
 
 # Set API key and ID
 os.environ['API_KEY'] = '51bc41f2ca1657d3ee7e76e0e360ba85'
@@ -23,12 +23,6 @@ app.config["SESSION_TYPE"] = "filesystem"
 app.config['SESSION_FILE_DIR'] = '/tmp/flask_session'
 app.config['SESSION_FILE_THRESHOLD'] = 100
 Session(app)
-
-# Make sure API_KEY and API_ID are set
-if not os.environ.get("API_KEY"):
-    raise RuntimeError("API_KEY not set")
-elif not os.environ.get("API_ID"):
-    raise RuntimeError("API_ID not set")
 
 @app.after_request
 def after_request(response):
@@ -146,7 +140,9 @@ dishtype = {
     # 'sweets': 'Sweets'
 }
 
-# Routes ##################################################################
+def len_hl_len_ct_calculation(len_hl, len_ct):
+    total_length = len_hl + len_ct
+    return total_length
 
 @app.route("/")
 def index():
@@ -261,6 +257,27 @@ def about():
 @app.route('/bookmarks_icon')
 def bookmarks_icon():
     return render_template('bookmarks.html')
+
+@app.route('/health')
+def health():
+    return render_template('health.html')
+
+@app.route('/game', methods=['GET', 'POST'])
+def game():
+    if request.method == 'POST':
+        guess = int(request.form['guess'])
+        secret_number = 42  # The secret number to guess
+
+        if guess == secret_number:
+            result = 'Congratulations! You guessed the correct number.'
+        elif guess < secret_number:
+            result = 'Too low. Try again!'
+        else:
+            result = 'Too high. Try again!'
+        
+        return render_template('game.html', result=result)
+
+    return render_template('game.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

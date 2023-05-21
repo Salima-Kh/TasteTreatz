@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Game
+{% endblock %}
+
+{% block main %}
+<div class="container d-flex justify-content-center align-items-center my-5" style="width: 500px; height: 500px; border: 2px solid #ccc; border-radius: 10px; background-color: #fff; padding: 20px;">
+    <div class="text-center">
+        <h1>Guess the Number</h1>
+        {% if result %}
+            <p>{{ result }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('game') }}">
+            <div class="form-group">
+                <label style="margin-top: 20px;" for="guess">Enter your guess:</label>
+                <input type="number" class="form-control" id="guess" name="guess" required>
+            </div>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

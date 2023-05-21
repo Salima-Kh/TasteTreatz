@@ -1,45 +1,71 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: lato, sans-serif;
-    scroll-behavior: smooth;
-    font-style: var(--black);
+    font-family: 'Lato', sans-serif;
+    font-weight: var(--black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 :root {
-    --green: #4caf50; /* Visible green color */
-    --orange: #f3c98c; /* Visible orange color */
-    --yellow: #ffeb3b; /* Visible yellow color */
-    --gold: #FFD700; /* Visible beige color */
-    --black: #333333; /* Visible black color */
-    --whitish: #fefcfb;
-    --white: 245, 245, 245;
+    --green: #4caf50;
+    --orange: #574223;
+    --yellow: #FFD700;
+    --gold: #FFD700;
+    --black: #f71010;
+    --whitish: #6eee13;
+    --white: #f5f5f5;
     --maintransition: all 0.3s linear;
     --gradient: linear-gradient(60deg, rgba(233, 174, 5, 1) 15%, rgba(221, 114, 15, 1) 50%, rgba(152, 166, 12, 1) 85%);
 }
 
 body {
-    background: rgba(0, 0, 0, 0.85) url('food.jpeg') center center fixed; /* Darkened background */
+    /* Use rgba instead of just a color code to set an opacity value */
+    background-color: rgba(0, 0, 0, 0.85);
+    background-image: url('food.jpg');
+    background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
+    text-size-adjust: 100%;
 }
 
+/* Add an overlay on top of the background image */
+body::before {
+    content: "";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+    z-index: -1;
+}
+
+.element {
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+.container {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+}
 /* Custom fonts */
 .playfair{
-    font-family: playfair-display, serif;
+    font-family: 'Playfair Display', serif;
 }
 
 .noto {
     font-family: 'Noto Emoji';
 }
 
-
 /* Title */
 nav .navbar-brand {
-    font-size: xxx-large;
+    font-size: 3rem;
     font-weight: 900;
 }
-
 
 /* Font weights */
 .fw-3{
@@ -63,11 +89,11 @@ nav .navbar-brand {
 }
 
 .light-text {
-    color: #fefcfb; /* Light text color for better visibility on a dark background */
+    color: #454845;
 }
 
-
 /* Input fields (hover/focus) */
+
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -86,70 +112,96 @@ input[type="tel"]:focus,
 input[type="checkbox"]:hover,
 input[type="color"]:focus {
     border-color: rgba(20, 20, 2, 0.1);
-    box-shadow: 0 1px 1px rgba(20, 20, 2, 0.075) inset, 0 0 8px rgba(20, 20, 2, 0.2);
+    box-shadow: 0 1px 1px rgba(20, 20, 2, 0.075)
+    inset, 0 0 8px rgba(20, 20, 2, 0.2);
     outline: none;
     transition: var(--maintransition);
+}
+input[type="text"] {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.2em;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Media queries for smaller screens */
+@media only screen and (max-width: 768px) {
+    /* Adjust checkbox layout for smaller screens */
+    .checkbox-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+label {
+    margin-right: 0;
+    margin-bottom: 10px;
+}
+input[type="checkbox"] {
+    margin-right: 10px;
+}
 }
 
 
 /* Checkboxes */
 label {
-    cursor: pointer;
-    opacity: 0.6;
+cursor: pointer;
+opacity: 0.6;
 }
 
 input[type="checkbox"]:checked {
-    background-color: var(--green);
-    outline: none;
-    border: none;
-    box-shadow: 0 1px 1px rgba(20, 20, 2, 0.075) inset, 0 0 8px rgba(20, 20, 2, 0.2);
+background-color: var(--green);
+outline: none;
+border: none;
+opacity: 1;
+}
+
+input[type="checkbox"] {
+    opacity: 0.6;
+    background-color: #ccc;
 }
 
 input:hover+label {
-    opacity: 0.8;
-    transition: var(--maintransition);
+opacity: 0.8;
+transition: var(--maintransition);
 }
 
-
 input:checked+label {
-    font-weight: 500;
-    opacity: 1;
-    transition: var(--maintransition);
+font-weight: 500;
+opacity: 1;
+transition: var(--maintransition);
 }
 
 /* Carousel images */
 .carousel {
-    width: 25rem;
-    height: 25rem;
-    background-size: contain;
-    align-self: center;
-    transition: var(--maintransition);
+width: 25rem;
+height: 25rem;
+background-size: contain;
+align-self: center;
+transition: var(--maintransition);
 }
-
 
 /* Off white background */
 .form, .active {
-    background-color: rgba(255, 255, 255, 0.95)!important;
-    border-radius: 0.25rem;
-    border: 0!important;
+background-color: rgba(255, 255, 255, 0.90);
+border-radius: 0.25rem;
+border: 0;
 }
-
 
 /* Links */
 a {
-    color: var(--whitish)!important;
-    text-decoration: none!important;
+color: var(--black);
+text-decoration: none;
 }
 
 a:hover,
 a:active {
-    color: var(--yellow) !important;
-    transition: var(--maintransition) !important;
+color: var(--gold);
+transition: var(--maintransition);
 }
 
-
-/* BUTTON / SUBMIT */
-/* On hover and active */
+/* BUTTON / SUBMIT /
+/ On hover and active */
 .yellow,
 .yellow:hover,
 .yellow:active,
@@ -161,10 +213,10 @@ button:active,
 .field span:active,
 input[type="submit"],
 input[type="submit"]:hover,
-input[type="submit"]:active{
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+input[type="submit"]:active {
+border: none;
+outline: none;
+box-shadow: none;
 }
 
 /* Opacity on default */
@@ -172,7 +224,7 @@ input[type="submit"]:active{
 button,
 .field span,
 input[type="submit"] {
-    opacity: 1;
+opacity: 1;
 }
 
 /* Opacity on hover and active */
@@ -185,16 +237,16 @@ button:active,
 input[type="submit"]:hover,
 input[type="submit"]:active,
 .footer:hover,
-.footer:active{
-    transition: var(--maintransition) !important;
-    opacity: 0.7;
+.footer:active {
+transition: var(--maintransition);
+opacity: 0.7;
 }
 
 /* Yellow button (external links) */
 .yellow,
 .yellow:hover,
-.yellow:active{
-    background-color: var(--yellow) !important;
+.yellow:active {
+background-color: var(--gold);
 }
 
 /* Green button (default) */
@@ -206,133 +258,100 @@ button:active,
 .field span:active,
 input[type="submit"],
 input[type="submit"]:hover,
-input[type="submit"]:active{
-    background-color: var(--green) !important;
+input[type="submit"]:active {
+background-color: var(--green);
 }
 
 /* + or - ingredients in index.html */
 .field span:last-child {
-    display: none;
+display: none;
 }
 
 .field {
-    display: flex;
+display: flex;
 }
 
-
-
 /* Waving hand emoji css from: https: //jarv.is/notes/css-waving-hand-emoji/*/
-.wave{
-    animation-name: wave-animation;
-    animation-duration: 2.5s;
-    transform-origin: 70% 70%;
-    display: inline-block;
+.wave {
+animation-name: wave-animation;
+animation-duration: 2.5s;
+transform-origin: 70% 70%;
+display: inline-block;
 }
 
 @keyframes wave-animation {
+0% {
+transform: rotate(0.0deg);
+}
+10% {
+transform: rotate(14.0deg);
+}
+20% {
+transform: rotate(-8.0deg);
+}
+30% {
+transform: rotate(14.0deg);
+}
+40% {
+transform: rotate(-4.0deg);
+}
+50% {
+transform: rotate(10.0deg);
+}
+/* Add shadow to text */
+h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Add shadow to buttons */
+button {
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+.mood-button {
+    position: relative;
+    display: inline-block;
+    background-color: #4CAF50; /* Change the background color */
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: background-color 0.3s, transform 0.3s;
+    overflow: hidden;
+}
+
+.mood-button:hover {
+    background-color: #3f8e40; /* Change the hover background color */
+    transform: scale(1.1);
+}
+
+.mood-button::before,
+.mood-button::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    animation: rotate 5s infinite linear;
+}
+
+.mood-button::after {
+    width: 250px;
+    height: 250px;
+    border-color: rgba(255, 255, 255, 0.3);
+    animation-delay: 1s;
+}
+
+@keyframes rotate {
     0% {
-        transform: rotate(0.0deg)
-    }
-    10% {
-        transform: rotate(14.0deg)
-    }
-    20% {
-        transform: rotate(-8.0deg)
-    }
-    30% {
-        transform: rotate(14.0deg)
-    }
-    40% {
-        transform: rotate(-4.0deg)
-    }
-    50% {
-        transform: rotate(10.0deg)
-    }
-    60% {
-        transform: rotate(0.0deg)
+        transform: rotate(0);
     }
     100% {
-        transform: rotate(0.0deg)
+        transform: rotate(360deg);
     }
-}
-
-/* Hide */
-.hide{
-    display: none;
-}
-
-/* Back to top */
-#btn-back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-}
-
-.cream-background {
-    background-color: #b3b3b8; /* Cream color */
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    padding: 15px; /* Optional: Add padding for inner spacing */
-}
-
-.team-header {
-    color: #bad8e2; /* Same color as the content text */
-}
-
-.custom-nav-link {
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 10px 15px;
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    margin-right: 10px;
-    transition: background-color 0.3s ease;
-}
-
-.custom-nav-link:hover {
-    background-color: rgba(176, 195, 98, 0.452);
-}
-
-.random-recipe-container {
-    position: relative;
-    background-color: #ebebdc;
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.random-recipe-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    border: 5px dashed #e9d9d8;
-}
-
-.random-recipe-container h2 {
-margin-bottom: 20px;
-}
-
-.random-recipe-container p {
-margin-bottom: 30px;
-}
-
-.random-recipe-container button {
-display: inline-block;
-background-color: #E3A19B;
-border: none;
-border-radius: 50px;
-color: #fff;
-font-size: 20px;
-font-weight: bold;
-padding: 20px 40px;
-transition: background-color 0.2s ease-in-out;
-}
-
-.random-recipe-container button:hover {
-background-color: #d6bfba;
 }
